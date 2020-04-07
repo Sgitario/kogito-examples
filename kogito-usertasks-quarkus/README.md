@@ -42,9 +42,9 @@ This example shows
 ### Prerequisites
  
 You will need:
-  - Java 1.8.0+ installed 
+  - Java 11+ installed 
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.5.4+ installed
+  - Maven 3.6.2+ installed
 
 When using native image compilation, you will also need: 
   - GraalVM 19.3+ installed
@@ -74,10 +74,14 @@ To run the generated native executable, generated in `target/`, execute
 ./target/kogito-usertasks-quarkus-{version}-runner
 ```
 
-### Use the application
+### OpenAPI (Swagger) documentation
+[Specification at swagger.io](https://swagger.io/docs/specification/about/)
 
-Examine OpenAPI via swagger UI at [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui)
-[Dev Mode Only] https://quarkus.io/guides/openapi-swaggerui#use-swagger-ui-for-development
+You can take a look at the [OpenAPI definition](http://localhost:8080/openapi?format=json) - automatically generated and included in this service - to determine all available operations exposed by this service. For easy readability you can visualize the OpenAPI definition file using a UI tool like for example available [Swagger UI](https://editor.swagger.io).
+
+In addition, various clients to interact with this service can be easily generated using this OpenAPI definition.
+
+When running in either Quarkus Development or Native mode, we also leverage the [Quarkus OpenAPI extension](https://quarkus.io/guides/openapi-swaggerui#use-swagger-ui-for-development) that exposes [Swagger UI](http://localhost:8080/swagger-ui/) that you can use to look at available REST endpoints and send test requests.
 
 ### Submit a request to start new approval
 
@@ -142,14 +146,14 @@ This should return empty response as the admin user was the first approver and b
 Repeating the request with another user will return task
 
 ```
-curl -H 'Content-Type:application/json' -H 'Accept:application/json' 'http://localhost:8080/approvals/{uuid}/tasks?john=admin&group=managers'
+curl -H 'Content-Type:application/json' -H 'Accept:application/json' 'http://localhost:8080/approvals/{uuid}/tasks?user=john&group=managers'
 ```
 
 
 ### Complete second line approval task
 
 ```
-curl -X POST -d '{"approved" : true}' -H 'Content-Type:application/json' -H 'Accept:application/json' 'http://localhost:8080/approvals/{uuid}/secondLineApproval/{tuuid}?john=admin&group=managers'
+curl -X POST -d '{"approved" : true}' -H 'Content-Type:application/json' -H 'Accept:application/json' 'http://localhost:8080/approvals/{uuid}/secondLineApproval/{tuuid}?user=john&group=managers'
 ```
 
 where `{uuid}` is the id of the given approval instance and `{tuuid}` is the id of the task instance
@@ -182,4 +186,3 @@ You should see a similar message after performing the second line approval after
 ```
 {"id":"f498de73-e02d-4829-905e-2f768479a4f1", "approver":"admin","firstLineApproval:true, "secondLineApproval":true,"traveller":{"firstName":"John","lastName":"Doe","email":"jon.doe@example.com","nationality":"American","address":{"street":"main street","city":"Boston","zipCode":"10005","country":"US"}}}
 ```
-

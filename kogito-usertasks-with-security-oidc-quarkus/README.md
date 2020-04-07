@@ -22,9 +22,9 @@ This example shows
 ### Prerequisites
  
 You will need:
-  - Java 1.8.0+ installed 
+  - Java 11+ installed 
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.5.4+ installed
+  - Maven 3.6.2+ installed
   - [jq](https://stedolan.github.io/jq) tool installed. You can download it from [here](https://stedolan.github.io/jq/download)
   - Docker
 
@@ -39,7 +39,7 @@ When using native image compilation, you will also need:
 To start a Keycloak Server you can use Docker and just run the following command:
 
 ```
-docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin  -e KEYCLOAK_IMPORT=/tmp/kogito-realm.json -v <kogito-quickstarts_absolute_path>/kogito-usertasks-with-security-oidc-springboot/config/kogito-realm.json:/tmp/kogito-realm.json -p 8280:8080  jboss/keycloak
+docker run -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin  -e KEYCLOAK_IMPORT=/tmp/kogito-realm.json -v <kogito-quickstarts_absolute_path>/kogito-usertasks-with-security-oidc-quarkus/config/kogito-realm.json:/tmp/kogito-realm.json -p 8280:8080  jboss/keycloak
 ```
 
 You should be able to access your Keycloak Server at [localhost:8280/auth](http://localhost:8280).
@@ -73,7 +73,14 @@ To run the generated native executable, generated in `target/`, execute
 ./target/kogito-usertasks-with-security-oidc-keycloak-{version}-runner
 ```
 
-### Use the application
+### OpenAPI (Swagger) documentation
+[Specification at swagger.io](https://swagger.io/docs/specification/about/)
+
+You can take a look at the [OpenAPI definition](http://localhost:8080/openapi?format=json) - automatically generated and included in this service - to determine all available operations exposed by this service. For easy readability you can visualize the OpenAPI definition file using a UI tool like for example available [Swagger UI](https://editor.swagger.io).
+
+In addition, various clients to interact with this service can be easily generated using this OpenAPI definition.
+
+When running in either Quarkus Development or Native mode, we also leverage the [Quarkus OpenAPI extension](https://quarkus.io/guides/openapi-swaggerui#use-swagger-ui-for-development) that exposes [Swagger UI](http://localhost:8080/swagger-ui/) that you can use to look at available REST endpoints and send test requests.
 
 ### Submit a request to start new approval
 

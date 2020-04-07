@@ -11,11 +11,6 @@
   <artifactId>drools-quarkus-unit-example</artifactId>
   <name>Kogito Example :: Drools and Openshift</name>
 
-  <properties>
-    <version.surefire>2.22.1</version.surefire>
-  </properties>
-
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -36,7 +31,6 @@
       <plugin>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
-        <version>${version.io.quarkus}</version>
         <executions>
           <execution>
             <goals>
@@ -71,6 +65,10 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.kie.kogito</groupId>
@@ -102,16 +100,12 @@
                 <goals>
                   <goal>native-image</goal>
                 </goals>
-                <configuration>
-                  <additionalBuildArgs>--allow-incomplete-classpath</additionalBuildArgs>
-                </configuration>
               </execution>
             </executions>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-failsafe-plugin</artifactId>
-            <version>${version.surefire}</version>
           </plugin>
         </plugins>
       </build>

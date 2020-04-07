@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 
 import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.kie.kogito.Application;
 import org.kie.kogito.Model;
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @QuarkusTest
+@Disabled("currently flaky, waiting on upstream fix Quarkus-side, see https://issues.redhat.com/browse/KOGITO-1543")
 public class BoundaryTimersProcessTest {
 
     @Inject
@@ -42,7 +44,7 @@ public class BoundaryTimersProcessTest {
         processInstance.start();
         assertEquals(org.kie.api.runtime.process.ProcessInstance.STATE_ACTIVE, processInstance.status());
 
-        latch.await(1, TimeUnit.MINUTES);
+        latch.await(2, TimeUnit.MINUTES);
 
         Optional<? extends ProcessInstance<?>> exists = timersOnTaskProcess.instances().findById(processInstance.id());
         assertFalse(exists.isPresent());

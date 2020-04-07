@@ -23,9 +23,9 @@ You can run the example in any of the following configurations:
 ### Prerequisites
  
 You will need:
-  - Java 1.8.0+ installed 
+  - Java 11+ installed 
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.5.4+ installed
+  - Maven 3.6.2+ installed
 
 When using native image compilation, you will also need: 
   - [GraalVM 19.1.1](https://github.com/oracle/graal/releases/tag/vm-19.1.1) installed 
@@ -36,9 +36,9 @@ When using native image compilation, you will also need:
 
 Please follow the instruction for each of the individual services
 
-* [hr](hr/readme.md)
-* [payroll](payroll/readme.md)
-* [onboarding](onboarding/readme.md)
+* [hr](hr/README.md)
+* [payroll](payroll/README.md)
+* [onboarding](onboarding/README.md)
 
 ## Example Usage
 

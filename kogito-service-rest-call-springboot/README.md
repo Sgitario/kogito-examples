@@ -45,9 +45,9 @@ This example shows
 ### Prerequisites
  
 You will need:
-  - Java 1.8.0+ installed 
+  - Java 11+ installed 
   - Environment variable JAVA_HOME set accordingly
-  - Maven 3.5.4+ installed
+  - Maven 3.6.2+ installed
 
 ### Compile and Run in Local Dev Mode
 
@@ -68,7 +68,12 @@ To run the generated native executable, generated in `target/`, execute
 java -jar target/kogito-service-rest-call-sprintboot-{version}.jar
 ```
 
-### Use the application
+### OpenAPI (Swagger) documentation
+[Specification at swagger.io](https://swagger.io/docs/specification/about/)
+
+You can take a look at the [OpenAPI definition](http://localhost:8080/docs/swagger.json) - automatically generated and included in this service - to determine all available operations exposed by this service. For easy readability you can visualize the OpenAPI definition file using a UI tool like for example available [Swagger UI](https://editor.swagger.io).
+
+In addition, various clients to interact with this service can be easily generated using this OpenAPI definition.
 
 
 ### Submit a user name
