@@ -1,0 +1,4 @@
+FROM quay.io/kiegroup/kogito-quarkus-jvm-ubi8:0.10
+COPY target/lib/* /home/kogito/bin/lib/
+COPY target/process-quarkus-example-runner.jar /home/kogito/bin/process-quarkus-example-runner.jar
+ENTRYPOINT [ "/home/kogito/kogito-app-launch.sh" ]

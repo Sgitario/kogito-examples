@@ -1,0 +1,3 @@
+FROM quay.io/kiegroup/kogito-quarkus-ubi8:0.10
+COPY target/process-quarkus-example-runner /home/kogito/bin/process-quarkus-example-runner
+ENTRYPOINT [ "/home/kogito/kogito-app-launch.sh" ]
