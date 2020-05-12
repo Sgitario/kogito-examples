@@ -28,7 +28,6 @@ public class VisaApplication {
 	private boolean approved;
 
 	public VisaApplication() {
-        VisaApplicationsMessageDataEvent a;
 	}
 
 	public VisaApplication(String firstName, String lastName, String city, String country, int duration,
